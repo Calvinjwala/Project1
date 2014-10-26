@@ -2,15 +2,16 @@
 <% include ../partials/navbar %>
 
 
-<h1>Home</h1>
+<h1>Dreams</h1>
 
-  <h1><%= user.first_name%> <%= user.last_name %>'s Posts</h1>
-  <div class="new_post">
+<div class="new_post">
   <% allPosts.forEach(function(post){ %>
   <p>
   <h3>
   <%= post.title %>
   </h3>
   <%= post.body %>
+  </p>
+</div>
 
 <% include ../partials/footer %>

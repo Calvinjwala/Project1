@@ -46,7 +46,7 @@ passport.deserializeUser(function(id, done){
     });
 });
 
-///// INITIAL ROUTING //////
+///// INITIAL ROUTING ////// - ALL DONE
 
 app.get('/', routeMiddleware.preventLoginSignup, function(req,res){
     res.render('index');
@@ -61,12 +61,13 @@ app.get('/login', routeMiddleware.preventLoginSignup, function(req,res){
 });
 
 
-// POST-SIGN UP OR LOG IN
+////// POST-SIGN UP OR LOG IN ///// - REWIRE
+///// HAVE "HOME" LEAD TO 
 app.get('/home', routeMiddleware.checkAuthentication, function(req,res){
   res.render("home", {user: req.user});
 });
 
-// on submit, create a new users using form values
+// on submit, create a new users using from values
 app.post('/submit', function(req,res){
   db.User.createNewUser(req.body.username, req.body.password, req.body.location,
   function(err){
@@ -91,6 +92,27 @@ app.get('/logout', function(req,res){
   res.redirect('/');
 });
 
+
+/// BELOW NOT DONE ///
+
+//////// AUTHOR ROUTES ///// - need to map out with post routes
+//Show
+//:id is the newly created id, unique to the author
+app.get('/oneironaut/:id/dreams', function(req,res){
+  console.log("oneironaut/id/dreams");
+//goes to the database to find the Author with the same id. 
+//once that is done, it calls a function, checking for error and author
+  db.User.find(req.params.id).done(function(err, user){
+//if no error, capture author and their posts. once done, calls another function
+    user.getPosts().done(function(err, posts){
+//if no error, renders the author/show page and 
+      res.render('users/index', {allPosts:posts, user:user});
+    });
+  });
+});
+
+
+
 /////// POST ROUTES ////// - need to map out correctly
 
 //Index - all dreams
@@ -109,27 +131,34 @@ app.get('/dreams/new', function(req, res){
 });
 
 
-//Create
-app.post('/dreams/', function(req,res){
-  var userId = req.body.userId;
+
+
+
+
+
+//Create - NOT DONE!!
+app.post('/dreams', function(req,res){
   var title = req.body.post.title;
   var body = req.body.post.body;
-  //will this id be the same as a  value id from the label?
-  var id = req.body.id;
+  var userId = req.params.userId;
+  //will this id be the same as a value id from the label?
+  //try and see if changing to tag will change it.
+  var tag = req.body.post.tag;
+
   db.Post.create({
     title:title,
     body:body,
     userId: userId,
     // same as above
-    id: id
+    tag:tag
   }).done(function(err,success){
     if (err) {
       // still relevant below?
       var errMsg = "title must be at least 6 characters";
-      res.render('posts/new',{errMsg:errMsg, userId:userId, title:title, body:body, id:id});
+      res.render('posts/new',{errMsg:errMsg, userId:userId, title:title, body:body, tag:tag});
     }
     else {
-      res.redirect('/dreamers/' + userId + '/posts');
+      res.redirect('/oneironaut/' + userId + '/dreams');
     }
   });
 });
@@ -164,10 +193,10 @@ app.put('/dreams/:id', function(req, res) {
     }).done(function(err,success){
       if(err) {
         var errMsg = "title must be at least 6 characters";
-        res.render('library/edit',{post: post, errMsg:errMsg});
+        res.render('posts/edit',{post: post, errMsg:errMsg});
       }
       else{
-        res.redirect('/dreamers/' + author.id + '/posts');
+        res.redirect('/oneironaut/' + author.id + '/dreams');
       }
      });
     });

@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div class ="new_post">
+
+  <form action="/posts/" method="post">
+    <p>
+      <label for="title"> Title</label><br>
+      <input type ="text" name="post[title]" id="title" value = "<%= title%>" autofocus>
+    </p>
+    <p>
+      <label for="body">Body</label><br>
+      <textarea rows="4" cols="50" name="post[body]" id="body" value ="<%= body%>">
+      </textarea>
+    </p>
+
+<input type="radio" name="dream_type" value="1" id="1"> Whimsical<br>
+<input type="radio" name="dream_type" value="2" id="2"> Strange<br>
+<input type="radio" name="dream_type" value="3" id="3"> Realistic<br>
+<input type="radio" name="dream_type" value="4" id="4"> Good<br>
+<input type="radio" name="dream_type" value="5" id="5"> Neutral<br>
+<input type="radio" name="dream_type" value="6" id="6"> Nightmare<br>
+<p>
+  <input type="submit" value="Save">
+</p>
+</form>
+
+</div>
+
+<% include ../partials/footer %>

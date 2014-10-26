@@ -131,11 +131,6 @@ app.get('/dreams/new', function(req, res){
 });
 
 
-
-
-
-
-
 //Create - NOT DONE!!
 app.post('/dreams', function(req,res){
   var title = req.body.post.title;

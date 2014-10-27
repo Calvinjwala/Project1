@@ -10,21 +10,21 @@
 <form action="/dreams" method="post">
     <p> 
       <label for="title">Title</label><br>
-      <input type ="text" name="posts[title]" id="title" value = "<%= title%>" autofocus>
+      <input type ="text" name="post[title]" id="title" value = "<%= title%>" autofocus>
     </p>
     <p>
       <label for="body">Body</label><br>
-      <textarea rows="4" cols="100" name="posts[body]" id="body" value ="<%= body%>">
+      <textarea rows="4" cols="100" name="post[body]" id="body" value ="<%= body%>">
       </textarea>
     </p>
 
 <!-- change value input? -->
-<input type="radio" name="posts[tag]" value="1" id="tag"> Whimsical<br>
-<input type="radio" name="posts[tag]" value="2" id="tag"> Strange<br>
-<input type="radio" name="posts[tag]" value="3" id="tag"> Realistic<br>
-<input type="radio" name="posts[tag]" value="4" id="tag"> Good<br>
-<input type="radio" name="posts[tag]" value="5" id="tag"> Neutral<br>
-<input type="radio" name="posts[tag]" value="6" id="tag"> Nightmare<br>
+<input type="radio" name="post[tag]" value="1" id="tag"> Whimsical<br>
+<input type="radio" name="post[tag]" value="2" id="tag"> Strange<br>
+<input type="radio" name="post[tag]" value="3" id="tag"> Realistic<br>
+<input type="radio" name="post[tag]" value="4" id="tag"> Good<br>
+<input type="radio" name="post[tag]" value="5" id="tag"> Neutral<br>
+<input type="radio" name="post[tag]" value="6" id="tag"> Nightmare<br>
 <br>
 <p>
 <input type="submit" value="Save" class ="btn btn-primary">

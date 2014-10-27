@@ -99,18 +99,18 @@ app.get('/logout', function(req,res){
 //////// AUTHOR ROUTES ///// - need to map out with post routes
 //Show
 //:id is the newly created id, unique to the author
-app.get('/oneironaut/:id/dreams', function(req,res){
-  console.log("oneironaut/id/dreams");
-//goes to the database to find the User with the same id. 
-//once that is done, it calls a function, checking for error and user
-  db.User.find(req.params.id).done(function(err, user){
-//if no error, capture author and their posts. once done, calls another function
-    user.getPosts().done(function(err, posts){
-//if no error, renders the author/show page and 
-      res.render('users/index', {allPosts:posts, user:user});
-    });
-  });
-});
+// app.get('/oneironaut/:id/dreams', function(req,res){
+//   console.log("oneironaut/id/dreams");
+// //goes to the database to find the User with the same id. 
+// //once that is done, it calls a function, checking for error and user
+//   db.User.find(req.params.id).done(function(err, user){
+// //if no error, capture author and their posts. once done, calls another function
+//     user.getPosts().done(function(err, posts){
+// //if no error, renders the author/show page and 
+//       res.render('users/index', {allPosts:posts, user:user});
+//     });
+//   });
+// });
 
 
 
@@ -125,7 +125,6 @@ app.get('/dreams', function(req,res){
 
 // New - done
 app.get('/dreams/new', function(req, res){
-  var id = req.params.id;
   db.User.findAll().done(function (err, posts) {
     res.render("posts/new", {title:"",body:"",id:"", tag:""});
   });
@@ -141,6 +140,8 @@ app.post('/dreams', function(req,res){
   //try and see if changing to tag will change it.
   var tag = req.body.post.tag;
 
+  console.log(req.body);
+
   db.Post.create({
     title:title,
     body:body,
@@ -151,7 +152,7 @@ app.post('/dreams', function(req,res){
     if (err) {
       // still relevant below?
       var errMsg = "title must be at least 6 characters";
-      res.render('posts/new',{errMsg:errMsg, userId:userId, title:title, body:body, tag:tag});
+      res.render('posts/new');
     }
     else {
       res.redirect('/dreams');
@@ -176,39 +177,6 @@ app.get('/dreams/:id/edit', function(req, res) {
   });
 });
 
-//Update 
-// app.put('/dreams/:id', function(req, res) {
-//   var id = req.params.id;
-//   db.Post.find(id).done(function(err,post){
-//     post.getUser().done(function(err, user){
-//       console.log(author);
-//       post.updateAttributes({
-//       title: req.body.post.title,
-//       body: req.body.post.body,
-//       id: req.body.post.id
-//     }).done(function(err,success){
-//       if(err) {
-//         var errMsg = "title must be at least 6 characters";
-//         res.render('posts/edit',{post: post, errMsg:errMsg});
-//       }
-//       else{
-//         res.redirect('/oneironaut/' + author.id + '/dreams');
-//       }
-//      });
-//     });
-//   });
-// });
-
-//Delete - done
-// app.delete('/dreams/:id', function(req, res) {
-//   var id = req.params.id;
-//   db.Post.find(id).done(function(err,post){
-//       post.destroy().done(function(err,success){
-//         res.redirect('/posts');
-//       });
-   
-//   });
-// });
 
 ////// 404 & INITIALIZING THE 3000 ////////
 

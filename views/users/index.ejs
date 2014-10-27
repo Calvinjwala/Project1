@@ -8,3 +8,37 @@
 
 
 <% include ../partials/footer %>
+
+//Update 
+// app.put('/dreams/:id', function(req, res) {
+//   var id = req.params.id;
+//   db.Post.find(id).done(function(err,post){
+//     post.getUser().done(function(err, user){
+//       console.log(author);
+//       post.updateAttributes({
+//       title: req.body.post.title,
+//       body: req.body.post.body,
+//       id: req.body.post.id
+//     }).done(function(err,success){
+//       if(err) {
+//         var errMsg = "title must be at least 6 characters";
+//         res.render('posts/edit',{post: post, errMsg:errMsg});
+//       }
+//       else{
+//         res.redirect('/oneironaut/' + author.id + '/dreams');
+//       }
+//      });
+//     });
+//   });
+// });
+
+//Delete - done
+// app.delete('/dreams/:id', function(req, res) {
+//   var id = req.params.id;
+//   db.Post.find(id).done(function(err,post){
+//       post.destroy().done(function(err,success){
+//         res.redirect('/posts');
+//       });
+   
+//   });
+// });

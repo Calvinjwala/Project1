@@ -1,3 +1,12 @@
+.navbar {
+  font: white;
+}
+
+.first {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: black;
+}
+
 .indexBanner {
 font-family: 'Josefin Sans', sans-serif;
 }

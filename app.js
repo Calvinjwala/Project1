@@ -61,13 +61,14 @@ app.get('/login', routeMiddleware.preventLoginSignup, function(req,res){
 });
 
 
-////// POST-SIGN UP OR LOG IN ///// - REWIRE
-///// HAVE "HOME" LEAD TO 
+
+
+////// POST-SIGN UP OR LOG IN ///// - DONE
 app.get('/home', routeMiddleware.checkAuthentication, function(req,res){
   res.render("home", {user: req.user});
 });
 
-// on submit, create a new users using from values
+// on submit, create a new users using from values - DONE
 app.post('/submit', function(req,res){
   db.User.createNewUser(req.body.username, req.body.password, req.body.location,
   function(err){
@@ -78,14 +79,14 @@ app.post('/submit', function(req,res){
   });
 });
 
-// authenticate users when logging in - no need for req,res passport does this for us
+// authenticate users when logging in - no need for req,res passport does this for us -done
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/home',
   failureRedirect: '/login',
   failureFlash: true
 }));
 
-// LOG OUT
+// LOG OUT - DONE
 app.get('/logout', function(req,res){
   //req.logout added by passport - delete the user id/session
   req.logout();
@@ -100,8 +101,8 @@ app.get('/logout', function(req,res){
 //:id is the newly created id, unique to the author
 app.get('/oneironaut/:id/dreams', function(req,res){
   console.log("oneironaut/id/dreams");
-//goes to the database to find the Author with the same id. 
-//once that is done, it calls a function, checking for error and author
+//goes to the database to find the User with the same id. 
+//once that is done, it calls a function, checking for error and user
   db.User.find(req.params.id).done(function(err, user){
 //if no error, capture author and their posts. once done, calls another function
     user.getPosts().done(function(err, posts){
@@ -115,7 +116,7 @@ app.get('/oneironaut/:id/dreams', function(req,res){
 
 /////// POST ROUTES ////// - need to map out correctly
 
-//Index - all dreams
+//Index - all dreams - done
 app.get('/dreams', function(req,res){
   db.Post.findAll().done(function(err, posts){
     res.render('posts/index', {allPosts: posts});
@@ -126,7 +127,7 @@ app.get('/dreams', function(req,res){
 app.get('/dreams/new', function(req, res){
   var id = req.params.id;
   db.User.findAll().done(function (err, posts) {
-    res.render("posts/new", {title:"",body:"",id:""});
+    res.render("posts/new", {title:"",body:"",id:"", tag:""});
   });
 });
 
@@ -135,7 +136,7 @@ app.get('/dreams/new', function(req, res){
 app.post('/dreams', function(req,res){
   var title = req.body.post.title;
   var body = req.body.post.body;
-  var userId = req.params.userId;
+  var userId = req.body.userId;
   //will this id be the same as a value id from the label?
   //try and see if changing to tag will change it.
   var tag = req.body.post.tag;
@@ -153,13 +154,13 @@ app.post('/dreams', function(req,res){
       res.render('posts/new',{errMsg:errMsg, userId:userId, title:title, body:body, tag:tag});
     }
     else {
-      res.redirect('/oneironaut/' + userId + '/dreams');
+      res.redirect('/dreams');
     }
   });
 });
 
 //Show
-app.get('/dreams/:id', function(req,res){
+app.get('/oneironaut/:id/dreams', function(req,res){
   var id = req.params.id;
   db.Post.find(id).done(function(err,post){
     res.render('posts/show', {post:post});
@@ -176,38 +177,38 @@ app.get('/dreams/:id/edit', function(req, res) {
 });
 
 //Update 
-app.put('/dreams/:id', function(req, res) {
-  var id = req.params.id;
-  db.Post.find(id).done(function(err,post){
-    post.getUser().done(function(err, user){
-      console.log(author);
-      post.updateAttributes({
-      title: req.body.post.title,
-      body: req.body.post.body,
-      id: req.body.post.id
-    }).done(function(err,success){
-      if(err) {
-        var errMsg = "title must be at least 6 characters";
-        res.render('posts/edit',{post: post, errMsg:errMsg});
-      }
-      else{
-        res.redirect('/oneironaut/' + author.id + '/dreams');
-      }
-     });
-    });
-  });
-});
+// app.put('/dreams/:id', function(req, res) {
+//   var id = req.params.id;
+//   db.Post.find(id).done(function(err,post){
+//     post.getUser().done(function(err, user){
+//       console.log(author);
+//       post.updateAttributes({
+//       title: req.body.post.title,
+//       body: req.body.post.body,
+//       id: req.body.post.id
+//     }).done(function(err,success){
+//       if(err) {
+//         var errMsg = "title must be at least 6 characters";
+//         res.render('posts/edit',{post: post, errMsg:errMsg});
+//       }
+//       else{
+//         res.redirect('/oneironaut/' + author.id + '/dreams');
+//       }
+//      });
+//     });
+//   });
+// });
 
 //Delete - done
-app.delete('/dreams/:id', function(req, res) {
-  var id = req.params.id;
-  db.Post.find(id).done(function(err,post){
-      post.destroy().done(function(err,success){
-        res.redirect('/posts');
-      });
+// app.delete('/dreams/:id', function(req, res) {
+//   var id = req.params.id;
+//   db.Post.find(id).done(function(err,post){
+//       post.destroy().done(function(err,success){
+//         res.redirect('/posts');
+//       });
    
-  });
-});
+//   });
+// });
 
 ////// 404 & INITIALIZING THE 3000 ////////
 

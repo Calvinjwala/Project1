@@ -2,16 +2,18 @@
 <% include ../partials/navbar %>
 
 
-<h1>Dreams</h1>
+<h1><%= user.username %>'s Dreams</h1>
 
-<div class="new_post">
-  <% allPosts.forEach(function(post){ %>
-  <p>
-  <h3>
-  <%= post.title %>
-  </h3>
-  <%= post.body %>
-  </p>
+<div class="myPosts">
+  <% allPosts.forEach(function(post, index){ %>
+
+  <h2><%= post.title %></h2>
+  <h4><%= post.body %></h4>
+
+  <p class="dateStamp"><%= post.createdAt %></p>
+
+  <% }) %>
+
 </div>
 
 <% include ../partials/footer %>

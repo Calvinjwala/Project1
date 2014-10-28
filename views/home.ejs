@@ -1,14 +1,44 @@
 <% include partials/header %>
 <% include partials/navbar %>
 
-<h1>Hello, <%= user.username %> - welcome.</h1>
+<h1>Hello, <%= user.username %>!</h1>
 
 <p>This should be where you can view and edit the user's dreams</p>
 
-<p> 
-<a href="/dreams/new">Write About Your Dream</a>
-</p><br> 
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="http://lorempixel.com/output/nature-q-c-400-300-6.jpg" alt="">
+      <div class="caption">
+        <h4>My Dreams</h4>
+        <p>Keep track of your wanderings.</p>
+        <p><a href="/my_dreams" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
 
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="http://lorempixel.com/output/nature-q-c-400-300-1.jpg" alt="">
+      <div class="caption">
+        <h4>Write About a New Dream</h4>
+        <p>Share your new dreams.</p>
+        <p><a href="/dreams/new" class="btn btn-primary" role="button">Create</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="http://lorempixel.com/output/nature-q-c-400-300-5.jpg" alt="">
+      <div class="caption">
+        <h4>Explore Dreams</h4>
+        <p>Inspiration can come from unexpected places.</p>
+        <p><a href="/dreams" class="btn btn-primary" role="button">Explore</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <% include partials/footer %>

@@ -1,44 +1,23 @@
 <% include ../partials/header %>
 <% include ../partials/navbar %>
 
-  <h1>Your Dreams</h1>
+<h1>My Dreams</h1>
+
+<% allPosts.forEach(function(post,index){ %>
+
+<h2><%= post.title%></h2>
+<h4><%= post.body %></h4>
+<p class = "dateStamp"><%= post.createdAt %></p>
+  <form>
+    <a href="my_dreams/<%=post.id%>/edit">Edit</a><br>
+  </form>
+
+  <form action="my_dreams/<%=post.id%>?_method=delete" method="post">
+    <input type= "submit" value="Delete">
+  </form>
+
+<% }) %>
+
+
  
-  <a href="/oneironaut/<%= user.id%>/dreams">See <%= user.username %>'s posts</a>
-  <br>
-
-
 <% include ../partials/footer %>
-
-//Update 
-// app.put('/dreams/:id', function(req, res) {
-//   var id = req.params.id;
-//   db.Post.find(id).done(function(err,post){
-//     post.getUser().done(function(err, user){
-//       console.log(author);
-//       post.updateAttributes({
-//       title: req.body.post.title,
-//       body: req.body.post.body,
-//       id: req.body.post.id
-//     }).done(function(err,success){
-//       if(err) {
-//         var errMsg = "title must be at least 6 characters";
-//         res.render('posts/edit',{post: post, errMsg:errMsg});
-//       }
-//       else{
-//         res.redirect('/oneironaut/' + author.id + '/dreams');
-//       }
-//      });
-//     });
-//   });
-// });
-
-//Delete - done
-// app.delete('/dreams/:id', function(req, res) {
-//   var id = req.params.id;
-//   db.Post.find(id).done(function(err,post){
-//       post.destroy().done(function(err,success){
-//         res.redirect('/posts');
-//       });
-   
-//   });
-// });

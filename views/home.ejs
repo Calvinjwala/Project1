@@ -1,14 +1,13 @@
-<% include partials/header %>
 <% include partials/navbar %>
+<% include partials/header %>
+<div class= "home">
 
-<h1>Hello, <%= user.username %>!</h1>
-
-<p>This should be where you can view and edit the user's dreams</p>
+<h2 id="homepage">Hello, <%= user.username %></h2>
 
 <div class="row text-center">
   <div class="col-md-4">
     <div class="thumbnail">
-      <img src="http://lorempixel.com/output/nature-q-c-400-300-6.jpg" alt="">
+      <img src="always.jpg" height=400px width=300px alt="">
       <div class="caption">
         <h4>My Dreams</h4>
         <p>Keep track of your wanderings.</p>
@@ -19,7 +18,7 @@
 
   <div class="col-md-4">
     <div class="thumbnail">
-      <img src="http://lorempixel.com/output/nature-q-c-400-300-1.jpg" alt="">
+      <img src="gil.jpg" alt="">
       <div class="caption">
         <h4>Write About a New Dream</h4>
         <p>Share your new dreams.</p>
@@ -30,7 +29,7 @@
 
   <div class="col-md-4">
     <div class="thumbnail">
-      <img src="http://lorempixel.com/output/nature-q-c-400-300-5.jpg" alt="">
+      <img src="perception.jpg" alt="">
       <div class="caption">
         <h4>Explore Dreams</h4>
         <p>Inspiration can come from unexpected places.</p>
@@ -39,7 +38,6 @@
     </div>
   </div>
 </div>
-
-
+</div>
 <% include partials/footer %>
 

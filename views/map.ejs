@@ -1,9 +1,50 @@
-<% include partials/header %>
 <% include partials/navbar %>
+<% include partials/header %>
 
-<h1>Search for places and read through dreams</h1>
 
-<iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/calvinjwala.k2fc6bik/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1IjoiY2FsdmluandhbGEiLCJhIjoiMzE3ZnZBTSJ9.fFvQP5sSJ7RRxVx9f6hQuw'></iframe>
+<h2 class= "first">Explore the dreams of oneironauts around the world.</h2>
+
+<div id='map' style="height:450px;"></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiY2FsdmluandhbGEiLCJhIjoiMzE3ZnZBTSJ9.fFvQP5sSJ7RRxVx9f6hQuw';
+var geocoder = L.mapbox.geocoder('mapbox.places-postcode-v1'),
+  map = L.mapbox.map('map', 'calvinjwala.k2fc6bik');
+//above stays as is
+//everything below is subject to change
+  // geocoder.addTo(map);
+
+var coords = <%- locations %>;
+coords.forEach(function (coord) {
+   var parts = coord.split(", ");
+   if (parts.length === 2) {
+    var nums = parts.map(parseFloat);
+    var backwards = [nums[1], nums[0]];
+    L.marker(backwards).addTo(map);
+  }
+ });
+
+
+// var geocoder = L.mapbox.geocoder('mapbox.places-postcode-v1');
+// geocoder.addTo(map);
+// Listen for the `found` result and display the first result
+// in the output container. For all available events, see
+// https://www.mapbox.com/mapbox.js/api/v2.1.4/l-mapbox-geocodercontrol/#section-geocodercontrol-on
+// geocoderControl.on('found', function(res) {
+//     output.innerHTML = JSON.stringify(res.results.features[0]);
+// });
+
+
+
+
+// you would usually use the gridControl to display a nice box in the corner
+// with your data, since we want a popup instead we won't initialize the gridControl
+
+// var geocoder.query(, callback)
+
+
+
+</script>
 
 
 <% include partials/footer %>

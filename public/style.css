@@ -1,13 +1,47 @@
 .first {
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center
+  text-align: center;
+  margin-top: 15px;
 }
 
-.indexBanner {
-font-family: 'Josefin Sans', sans-serif;
+.navbar-brand {
+  font-size: 22px;
+}
+
+.navbar {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 58px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: 0px;
+  margin-top:5px;
+  color: white;
+  font-size: 18px;
 }
 
 body {
   background-color: white;
+  color: black;
   font-family: 'Josefin Sans', sans-serif;
 }
+
+.thumbnail {
+  width: 380px;
+  border-color: white;
+}
+
+#homepage {
+  text-align: center;
+}
+
+.thumbnail > img{
+  height: 300px;
+  width: 400px;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+
+
+

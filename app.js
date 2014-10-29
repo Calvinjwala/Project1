@@ -10,6 +10,9 @@ var express = require("express"),
   app = express();
   var morgan = require('morgan');
   var routeMiddleware = require("./config/routes");
+  var geocoderProvider = 'google';
+  var httpAdapter = 'http';
+  var geocoder = require('node-geocoder').getGeocoder(geocoderProvider, httpAdapter);
 
 
 // Middleware for ejs, grabbing HTML and including static files
@@ -73,12 +76,17 @@ app.get('/home', routeMiddleware.checkAuthentication, function(req,res){
 
 // on submit, create a new users using from values - DONE
 app.post('/submit', function(req,res){
-  db.User.createNewUser(req.body.username, req.body.password, req.body.location,
+  //API Request to turn zip into geocode
+  geocoder.geocode(req.body.location, function(err, longlat) {
+    console.log(longlat);
+    var zipCode = (longlat[0].longitude + ', ' + longlat[0].latitude);
+  db.User.createNewUser(req.body.username, req.body.password, zipCode,
   function(err){
     res.render("signup", {message: err.message, username: req.body.username});
   },
   function(success){
     res.render("index", {message: success.message});
+    });
   });
 });
 
@@ -213,8 +221,14 @@ app.delete('/my_dreams/:id', function(req, res) {
 
 //Map
 app.get('/map', function(req,res){
-  res.render('map');
+  db.User.findAll().done(function(err, users){
+    var coords = users.map(function (user) {
+      return user.location;
+    });
+    res.render('map', {allUsers: users, locations: JSON.stringify(coords)});
+  });
 });
+
 
 
 ////// 404 & INITIALIZING THE 3000 ////////

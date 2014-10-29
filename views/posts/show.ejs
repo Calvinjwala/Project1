@@ -1,19 +1,24 @@
-<% include ../partials/header %>
 <% include ../partials/navbar %>
-
+<% include ../partials/header %>
 
 <h1><%= user.username %>'s Dreams</h1>
 
-<div class="myPosts">
+<div id="container">
   <% allPosts.forEach(function(post, index){ %>
-
-  <h2><%= post.title %></h2>
-  <h4><%= post.body %></h4>
-
-  <p class="dateStamp"><%= post.createdAt %></p>
-
+  <div class = "item">
+    <h2><%= post.title %></h2>
+    <h4><%= post.body %></h4>
+    <p class="dateStamp"><%= post.createdAt %></p>
+    <h4><%= post.tag %></h4>
+  </div>
   <% }) %>
-
 </div>
 
 <% include ../partials/footer %>
+
+<script>
+  $('#container').masonry({
+  columnWidth: 200,
+  itemSelector: '.item'
+});
+</script>

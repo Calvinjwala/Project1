@@ -1,28 +1,39 @@
-.first {
-  text-align: center;
-  margin-top: 15px;
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-.navbar-brand {
-  font-size: 22px;
+.logo {
+  text-align: center;
 }
 
 .navbar {
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 58px;
   margin-left: -5px;
   margin-right: -5px;
   margin-bottom: 0px;
   margin-top:5px;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
+  text-align: center;
 }
 
-body {
-  background-color: white;
-  color: black;
-  font-family: 'Josefin Sans', sans-serif;
+.navbar-header {
+  display: inline-block;
+  float: none;
+  margin-right: 80px;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.first {
+  text-align: center;
+  margin-top: 15px;
 }
 
 .thumbnail {
@@ -39,9 +50,7 @@ body {
   width: 400px;
 }
 
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;
+h4 {
+  white-space: pre-wrap;
 }
-
-
 

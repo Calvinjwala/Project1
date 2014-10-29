@@ -1,23 +1,25 @@
 <% include ../partials/navbar %>
-<% include ../partials/header %>
+<% include ../partials/masonry %>
 
 <h1>My Dreams</h1>
 
+<a href="/dreams/new">Create a New Dream</a>
+
+<div id="container">
 <% allPosts.forEach(function(post,index){ %>
+  <div id= "content" class= "clearfix">
+    <h2><%= post.title%></h2>
+    <h4><%= post.body %></h4>
+    <p class = "dateStamp"><%= post.createdAt %></p>
+      <form>
+        <a href="my_dreams/<%=post.id%>/edit">Edit</a><br>
+      </form>
 
-<h2><%= post.title%></h2>
-<h4><%= post.body %></h4>
-<p class = "dateStamp"><%= post.createdAt %></p>
-  <form>
-    <a href="my_dreams/<%=post.id%>/edit">Edit</a><br>
-  </form>
-
-  <form action="my_dreams/<%=post.id%>?_method=delete" method="post">
-    <input type= "submit" value="Delete">
-  </form>
-
+      <form action="my_dreams/<%=post.id%>?_method=delete" method="post">
+        <input type= "submit" value="Delete">
+      </form>
+    </div>
 <% }) %>
-
-
+</div>
  
 <% include ../partials/footer %>

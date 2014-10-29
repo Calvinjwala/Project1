@@ -14,7 +14,6 @@ var express = require("express"),
   var httpAdapter = 'http';
   var geocoder = require('node-geocoder').getGeocoder(geocoderProvider, httpAdapter);
 
-
 // Middleware for ejs, grabbing HTML and including static files
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -157,9 +156,9 @@ app.get('/oneironaut/:id/dreams', function(req,res){
   }
   db.User.find(id).done(function(err,user){
     user.getPosts().done(function(err,post){
-    res.render('posts/show', {allPosts:post, user:user});
-    console.log(db.User);
-    });
+      res.render('posts/show', {allPosts:post, user:user});
+      console.log(db.User);
+      });
   });
 }); 
 
@@ -173,7 +172,6 @@ app.get('/my_dreams', function(req,res){
     });
   });
 });
-
 
 // Edit - done
 app.get('/my_dreams/:id/edit', function(req, res) {
@@ -223,9 +221,9 @@ app.delete('/my_dreams/:id', function(req, res) {
 app.get('/map', function(req,res){
   db.User.findAll().done(function(err, users){
     var coords = users.map(function (user) {
-      return user.location;
+      return {name: user.username, loc: user.location, id:user.id};
     });
-    res.render('map', {allUsers: users, locations: JSON.stringify(coords)});
+    res.render('map', {userInfo: JSON.stringify(coords)});
   });
 });
 

@@ -1,6 +1,5 @@
 <% include partials/navbar %>
-<% include partials/header %>
-
+<% include partials/mapbox %>
 
 <h2 class= "first">Explore the dreams of oneironauts around the world.</h2>
 
@@ -14,13 +13,31 @@ var geocoder = L.mapbox.geocoder('mapbox.places-postcode-v1'),
 //everything below is subject to change
   // geocoder.addTo(map);
 
-var coords = <%- locations %>;
-coords.forEach(function (coord) {
-   var parts = coord.split(", ");
+var info = <%- userInfo %>;
+info.forEach(function (piece) {
+   var parts = piece.loc.split(", ");
    if (parts.length === 2) {
     var nums = parts.map(parseFloat);
-    var backwards = [nums[1], nums[0]];
-    L.marker(backwards).addTo(map);
+    var url = window.location.protocol + "//" + window.location.host + "/oneironaut/" + piece.id + "/dreams";
+    // L.marker(backwards).addTo(map);
+     L.mapbox.featureLayer({
+      type: 'Feature',
+      geometry: {
+          type: 'Point',
+          // coordinates here are in longitude, latitude order because
+          // x, y is the standard for GeoJSON and many formats
+          coordinates: nums
+      },
+      properties: {
+          title: '<a href="' + url + '">Oneironaut</a>',
+          description: piece.name,
+          // one can customize markers by adding simplestyle properties
+          // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
+            "marker-symbol": "circle",
+            "marker-size": "small",
+            "marker-color": "#1087bf"
+    }
+  }).addTo(map);
   }
  });
 

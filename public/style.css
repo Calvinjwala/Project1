@@ -33,6 +33,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .first {
   text-align: center;
+  margin-top: 12px;
 }
 
 .thumbnail {
@@ -50,8 +51,9 @@ h4 {
 }
 
 .dreamtype {
-  width: 100px;
   display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .new_post {
@@ -59,10 +61,78 @@ h4 {
   margin: 0 auto;
 }
 
-#dream_1 {
-  background-color: red;
+.editButton {
+  padding-right: 15px;
 }
 
-#dream_4 {
-  background-color: green;
+hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
+
+.private {
+  padding-right: 25px; 
+}
+
+.bottomButtons {
+  text-align: center;
+}
+
+/*circles on dreams*/
+.dream_1 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #c34851;
+}
+
+.dream_2 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #e19d55;
+}
+
+.dream_3 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #fff289;
+}
+
+.dream_4 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #40a85b;
+}
+
+.dream_5 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #386fac;
+}
+
+.dream_6 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #241369;
+}
+
+
+.dream_7 {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: #b44484;
+}
+

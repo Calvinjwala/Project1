@@ -4,7 +4,7 @@
 
 <h2 class = "first">Edit Your Dream</h2>
 
-
+<div class ="new_post">
 <% if(typeof errMsg !== 'undefined'){ %>
 <h3 style="color:red;"><%= errMsg %></h3>
 <% } %>
@@ -16,23 +16,42 @@
     </p>
     <p>
       <label for="body">Body</label><br>
-      <textarea rows="4" cols="100" name="post[body]" id="body"><%= post.body%>
+      <textarea rows="4" cols="125" name="post[body]" id="body"><%= post.body%>
       </textarea>
     </p>
 
 
-<div class="dreamtype"><input type="radio" name="post[tag]" value="1" id="tag"> Whimsical</div>
-<div class="dreamtype"><input type="radio" name="post[tag]" value="2" id="tag"> Strange</div>
-<div class="dreamtype"><input type="radio" name="post[tag]" value="3" id="tag"> Realistic</div>
-<div class="dreamtype"><input type="radio" name="post[tag]" value="4" id="tag"> Good</div>
-<div class="dreamtype"><input type="radio" name="post[tag]" value="5" id="tag"> Neutral</div>
-<div class="dreamtype"><input type="radio" name="post[tag]" value="6" id="tag"> Nightmare</div>
+<div class = "tagging" style= "text-align: center;" data-post-tag="<%=post.tag - 1%>">
 
-<br><br>
-<p>
-<input type="submit" value="Save" class ="input btn btn-primary">
-</p>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="1" id="tag"> Wild</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="2" id="tag"> Whimsical</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="3" id="tag"> Strange</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="4" id="tag"> Realistic</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="5" id="tag"> Sorrowful</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="6" id="tag"> Dark</div>
+  <div class="dreamtype"><input type="radio" name="post[tag]" value="7" id="tag"> Prophetic</div>
+</div>
+<br>
+
+  <p class= "bottomButtons">
+  <label class="private">
+      <input type="checkbox" id="private" name="post[private]">
+      Make Private  
+  </label>
+    <input type="submit" value="Save" class ="btn btn-primary">
+  </p>
+
 </form>
 
 </div>
+
+
+<script>
+  $(document).ready(function(){
+
+  var tagIndex = $(".tagging").attr("data-post-tag");
+  console.log(tagIndex);
+
+
+</script>
 <% include ../partials/footer %>

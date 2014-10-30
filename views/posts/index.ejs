@@ -1,32 +1,73 @@
 <% include ../partials/navbar %>
 <% include ../partials/masonry %>
 
-<h2>Below is a collection of dreams from people all around the world.</h2>
+<h2 class="first">Below is a collection of dreams from people all around the world.</h2>
+
+<div class="tags">
+  <label>
+    <input type="checkbox" id="wild" name="1" checked/> Wild 
+  </label>
+  <label>
+    <input type="checkbox" id="whimsical" name="2" checked/> Whimsical 
+  </label>
+  <label>
+    <input type="checkbox" id="strange" name="3" checked/> Strange 
+  </label>
+  <label>
+    <input type="checkbox" id="realistic" name="4" checked/> Realistic 
+  </label>
+  <label>
+    <input type="checkbox" id="sorrowful" name="5" checked/> Sorrowful 
+  </label>
+  <label>
+    <input type="checkbox" id="dark" name="6" checked/> Dark 
+  </label>
+  <label>
+    <input type="checkbox" id="prophetic" name="7" checked/> Prophetic 
+  </label>
+</div>
 
 <div id="container">
   <% allPosts.reverse(); %>
   <% allPosts.forEach(function(post,index){ %>
-  <div class= "content">
-    <h2><%= post.title%></h2>
+  <div class= "content"> 
+    <p class = "dream_<%= post.tag %>"></p>
+    <h2 class ="first"><%= post.title%></h2>
     <h4><%= post.body %></h4>
-    <p class = "dateStamp"><%= post.createdAt %> by <a href="/oneironaut/<%= post.User.id%>/dreams"><%= post.User.username %></a> </p>
+    <hr>
+    <p class = "dateStamp" style="margin: 0px"><%= post.createdAt %> by <a href="/oneironaut/<%= post.User.id%>/dreams"><strong><%= post.User.username %></strong></a> </p>
   </div>
 
   <% }) %>
 </div>
-
+<br>
 <br>
 <% include ../partials/footer %> 
 <script>
   $(document).ready(function(){
-    var $container = $('.container');
+  
+  var $container = $('.container');
 
-    // $container.imagesLoaded( function() {
-      $container.masonry({
-        itemSelector        : '.content',
-        columnWidth         : '.content',
-        transitionDuration  : 0
-      });
-    // });
+    $container.masonry({
+      itemSelector        : '.content',
+      columnWidth         : '.content',
+      transitionDuration  : 1100
+    });
+
+    $('div.tags').find('input:checkbox').live('click', function () {
+      var num = this.getAttribute("name");
+      var ischecked = $(this).prop('checked');
+
+      if (ischecked) {
+        $('.content > .dream_'+num).parent().show();
+      } else {
+        var elements = $('.content > .dream_'+num).parent();
+        elements.hide();
+        console.log("hiding: ", elements);
+      }
+
+      $container.masonry();
+
+    });
   });
 </script>

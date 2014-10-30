@@ -9,7 +9,7 @@
 <% allPosts.reverse(); %>
 <% allPosts.forEach(function(post,index){ %>
   <div class="content">
-    <p id = "dream_<%= post.tag %>"></p>
+    <p class = "dream_<%= post.tag %>"></p>
     <h2 class ="first"><%= post.title%></h2>
     <h4><%= post.body %></h4>
     <hr>
@@ -33,12 +33,10 @@
   $(document).ready(function(){
     var $container = $('.container');
 
-    // $container.imagesLoaded( function() {
-      $container.masonry({
-        itemSelector        : '.content',
-        columnWidth         : '.content',
-        transitionDuration  : 0
-      });
-    // });
+    $container.masonry({
+      itemSelector        : '.content',
+      columnWidth         : '.content',
+      transitionDuration  : 0
+    });
   });
 </script>

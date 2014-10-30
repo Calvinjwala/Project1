@@ -15,9 +15,7 @@
         <input type ="text" name="post[title]" id="title" value = "<%= title%>" autofocus>
     </p>
     <p>
-      <label for="body">Body</label><br>
-        <textarea rows="4" cols="125" name="post[body]" id="body" value ="<%= body%>">
-        </textarea>
+      <label for="body">Body</label><br><textarea rows="4" cols="125" name="post[body]" id="body" value="<%= body%>"></textarea>
     </p>
 
 <div class = "tagging" style= "text-align: center;">
@@ -33,7 +31,8 @@
 
   <p class= "bottomButtons">
   <label class="private">
-      <input type="checkbox" id="private" name="post[private]">
+
+      <input type="checkbox" id="private" name="post[priv]">
       Make Private  
   </label>
     <input type="submit" value="Save" class ="btn btn-primary">

@@ -17,6 +17,9 @@ module.exports = {
       body: {
         type: DataTypes.TEXT
       },
+      priv: {
+        type: DataTypes.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

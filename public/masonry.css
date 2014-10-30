@@ -29,6 +29,7 @@
   padding: 8px 8px;
   width: 265px;
   margin: 5px;
+  display: inline-block;
   border: 1px #c9c9c9 solid;
   /*float: left;*/
 }

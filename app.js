@@ -128,14 +128,23 @@ app.post('/dreams', function(req,res){
   var UserId = req.user.id;
   var tag = req.body.post.tag;
   var username = req.user.username;
+  var priv = req.body.post.priv;
 
-  console.log(req.body);
+  if(req.body.post.priv === 'on'){
+    priv = true;
+  }
+  else {
+    priv = false;
+  }
+
+  console.log(priv);
 
   db.Post.create({
     title:title,
     body:body,
     UserId: UserId,
-    tag:tag
+    tag:tag,
+    priv:priv
   }).done(function(err,success){
     if (err) {
       // still relevant below?

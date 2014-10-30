@@ -4,6 +4,10 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .logo {
   text-align: center;
 }

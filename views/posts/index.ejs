@@ -28,8 +28,10 @@
 </div>
 
 <div id="container">
+
   <% allPosts.reverse(); %>
   <% allPosts.forEach(function(post,index){ %>
+  <% if(!post.priv) {%>
   <div class= "content"> 
     <p class = "dream_<%= post.tag %>"></p>
     <h2 class ="first"><%= post.title%></h2>
@@ -37,7 +39,7 @@
     <hr>
     <p class = "dateStamp" style="margin: 0px"><%= post.createdAt %> by <a href="/oneironaut/<%= post.User.id%>/dreams"><strong><%= post.User.username %></strong></a> </p>
   </div>
-
+  <% } %>
   <% }) %>
 </div>
 <br>

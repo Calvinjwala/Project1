@@ -1,13 +1,14 @@
 <% include ../partials/navbar %>
 <% include ../partials/masonry %>
 
-<h1>My Dreams</h1>
+<h2>My Dreams</h2>
 
-<a href="/dreams/new">Create a New Dream</a>
+<h4><a href="/dreams/new">Create a New Dream</a></h4>
 
 <div id="container">
+<% allPosts.reverse(); %>
 <% allPosts.forEach(function(post,index){ %>
-  <div id= "content" class= "clearfix">
+  <div class="content">
     <h2><%= post.title%></h2>
     <h4><%= post.body %></h4>
     <p class = "dateStamp"><%= post.createdAt %></p>
@@ -21,5 +22,20 @@
     </div>
 <% }) %>
 </div>
+<br>
  
 <% include ../partials/footer %>
+
+<script>
+  $(document).ready(function(){
+    var $container = $('.container');
+
+    // $container.imagesLoaded( function() {
+      $container.masonry({
+        itemSelector        : '.content',
+        columnWidth         : '.content',
+        transitionDuration  : 0
+      });
+    // });
+  });
+</script>

@@ -10,23 +10,27 @@
 <form action="/dreams" method="post">
     <p> 
       <label for="title">Title</label><br>
-      <input type ="text" name="post[title]" id="title" value = "<%= title%>" autofocus>
+        <input type ="text" name="post[title]" id="title" value = "<%= title%>" autofocus>
     </p>
     <p>
       <label for="body">Body</label><br>
-      <textarea rows="4" cols="100" name="post[body]" id="body" value ="<%= body%>">
-      </textarea>
+        <textarea rows="4" cols="100" name="post[body]" id="body" value ="<%= body%>">
+        </textarea>
     </p>
-<div class = "1"><input type="radio" name="post[tag]" value="1" id="tag"> Whimsical<br></div>
-<div class = "2"><input type="radio" name="post[tag]" value="2" id="tag"> Strange<br></div>
-<div class = "3"><input type="radio" name="post[tag]" value="3" id="tag"> Realistic<br></div>
-<div class = "4"><input type="radio" name="post[tag]" value="4" id="tag"> Good<br></div>
-<div class = "5"><input type="radio" name="post[tag]" value="5" id="tag"> Neutral<br></div>
-<div class = "6"><input type="radio" name="post[tag]" value="6" id="tag"> Nightmare<br></div>
+
+<div class="dreamtype"><input type="radio" name="post[tag]" value="1" id="tag"> Whimsical</div>
+<div class="dreamtype"><input type="radio" name="post[tag]" value="2" id="tag"> Strange</div>
+<div class="dreamtype"><input type="radio" name="post[tag]" value="3" id="tag"> Realistic</div>
+<div class="dreamtype"><input type="radio" name="post[tag]" value="4" id="tag"> Good</div>
+<div class="dreamtype"><input type="radio" name="post[tag]" value="5" id="tag"> Neutral</div>
+<div class="dreamtype"><input type="radio" name="post[tag]" value="6" id="tag"> Nightmare</div>
+
 <br>
-<p>
-<input type="submit" value="Save" class ="btn btn-primary">
-</p>
+<br>
+  <p>
+    <input type="submit" value="Save" class ="btn btn-primary">
+  </p>
+
 </form>
 
 </div>

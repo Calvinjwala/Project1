@@ -4,15 +4,27 @@
 <h2 class="first"><%= user.username %>'s Dreams</h2>
 
 <div id="container">
+  <% allPosts.reverse(); %>
   <% allPosts.forEach(function(post, index){ %>
-  <div id= "content" class= "clearfix">
+  <div class= "content">
     <h2><%= post.title %></h2>
     <h4><%= post.body %></h4>
     <p class="dateStamp"><%= post.createdAt %></p>
+    <h4><%= post.tag %></h4>
     </div>
   <% }) %>
 </div>
 
 <% include ../partials/footer %>
 
+<script>
+  $(document).ready(function(){
+    var $container = $('.container');
 
+      $container.masonry({
+        itemSelector        : '.content',
+        columnWidth         : '.content',
+        transitionDuration  : 0
+      });
+    });
+</script>

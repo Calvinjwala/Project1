@@ -33,16 +33,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .first {
   text-align: center;
-  margin-top: 15px;
 }
 
 .thumbnail {
   width: 380px;
   border-color: white;
-}
-
-#homepage {
-  text-align: center;
 }
 
 .thumbnail > img{
@@ -54,3 +49,20 @@ h4 {
   white-space: pre-wrap;
 }
 
+.dreamtype {
+  width: 100px;
+  display: inline-block;
+}
+
+.new_post {
+  width: 900px;
+  margin: 0 auto;
+}
+
+#dream_1 {
+  background-color: red;
+}
+
+#dream_4 {
+  background-color: green;
+}

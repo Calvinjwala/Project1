@@ -1,5 +1,7 @@
 <% include partials/logo %>
 <% include partials/header %>
+<body>
+<div class ="container">
 
 <h1> Sign Up Form</h1>
 
@@ -9,7 +11,6 @@
     </div>
     <% }%>
 
-<br>
 <form action="/submit" method = "post">
   <p>
     <label for="username">Username: </label> <input type="text" name="username" id="username" autofocus value = "<%=username %>">
@@ -21,7 +22,7 @@
   <label for="location">Zip Code: </label> <input type="text" name="location" id="location">
   </p>
   <p>
-  <input type="submit" value="Sign up!" class = "btn btn-primary">
+  <input type="submit" value="Sign up!" class = "btn">
   </p>
   <a href="/login">Already have an account? Log in here</a>
 </form>

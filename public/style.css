@@ -4,8 +4,37 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+/*.hola {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  left:0px;
+  bottom:0px;
+  display: inline;
+}*/
+
+
+/*.hola {
+text-align: center;
+bottom: 0%;
+}
+
+.hola li {
+  display: inline-block;
+  margin: 5px;
+}*/
+
+.footy {
+  text-align: center;
+}
+
+#veryfirst {
+  background-color: #c9c9c9;
+}
+
 .btn {
   background-color: #c9c9c9;
+  color: black;
 }
 
 .text-center {
@@ -21,7 +50,7 @@ body {
 }
 
 .navbar {
-  padding-top: 0px;
+  padding-top: 8px;
   padding-bottom: 0px;
   padding-left: 58px;
   margin-left: -5px;
@@ -33,10 +62,20 @@ body {
   text-align: center;
 }
 
+.no_margin {
+  margin: 0;
+}
+
 .navbar-header {
   display: inline-block;
   float: none;
   margin-right: 80px;
+}
+
+.navbar-nav>li>a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 ul.nav li.dropdown:hover > ul.dropdown-menu {
@@ -45,7 +84,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .first {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .thumbnail {
@@ -75,6 +114,8 @@ h4 {
 
 .editButton {
   padding-right: 15px;
+  margin: 2px;
+  border: none;
 }
 
 hr {
@@ -88,6 +129,12 @@ hr {
 
 .bottomButtons {
   text-align: center;
+}
+
+#bigger {
+  font-size: 18px;
+  text-align: left;
+  padding-left: 255;
 }
 
 /*circles on dreams*/
@@ -147,4 +194,5 @@ hr {
   height: 20px; 
   background-color: #b44484;
 }
+
 

@@ -1,10 +1,12 @@
-<% include partials/logo %>
+
 <% include partials/header %>
 
-<div class= "index1">
+<body>
+<% include partials/logo %>
+
 <div class ="first">
 <br>
-  <h1> Oneironaut - an explorer of the dream world</h1>
+  <h1 class="no_margin"> Oneironaut - an explorer of the dream world</h1>
 
   <% if (typeof message !== 'undefined') { %>
     <div class = "alert alert-success">
@@ -20,12 +22,9 @@
 <h2>Share, explore, and discover.</h2>
 <h4>You may realize our hopes and dreams aren't too different after all.</h4><br>
 
-  <a href="/signup" class = "btn btn-primary btn-lg">Sign up</a>
+  <a href="/signup" class = "btn btn-lg">Sign up</a>
+  <a href="/login" class = "btn btn-lg">Log in</a>
 
-  <a href="/login" class = "btn btn-primary btn-lg">Log in</a>
-
-</div>
-</div>
 <% include partials/footer %>
 
 

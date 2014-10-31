@@ -1,5 +1,7 @@
 <% include ../partials/navbar %>
 <% include ../partials/masonry %>
+<body>
+<div class ="container">
 
 <h2 class="first">My Dreams</h2>
 
@@ -16,9 +18,11 @@
     <p class = "dateStamp"><%= post.createdAt %></p>
       <div class="first">
         <form style="display: inline-block;">
-          <a class="editButton" href="my_dreams/<%=post.id%>/edit">Edit</a>
+        <button>
+          <a class="editButton" href="my_dreams/<%=post.id%>/edit" style="padding: 0; color:black"> Edit</a>
+        </button>
         </form>
-        <form action="my_dreams/<%=post.id%>?_method=delete" method="post" style="display: inline-block;">
+        <form class= "editButton" action="my_dreams/<%=post.id%>?_method=delete" method="post" style="display: inline-block;">
           <input type= "submit" value="Delete">
         </form>
       </div>

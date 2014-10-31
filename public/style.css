@@ -4,6 +4,10 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.btn {
+  background-color: #c9c9c9;
+}
+
 .text-center {
   text-align: center;
 }

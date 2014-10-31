@@ -88,6 +88,8 @@ app.post('/submit', function(req,res){
           res.render("index", {message: success.message});
         }
       );
+    } else {
+      console.log(err);
     }
   });
 });

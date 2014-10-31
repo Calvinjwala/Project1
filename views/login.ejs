@@ -1,11 +1,12 @@
 
+<% include partials/logo %>
 <% include partials/header %>
+
 <body>
 <div class ="container">
-<% include partials/logo %>
 
-<div class= "">
-  <h1>Login </h1>
+<div class= "first" style="text-align: center">
+  <h2>Login </h2>
 
   <% if (message.length > 0) { %>
     <div class = "alert alert-danger">
@@ -25,5 +26,5 @@
       </p>
     </form>
     <a href="/signup">Don't have an account? Create one here</a>
-
+</div>
 <% include partials/footer %>

@@ -49,37 +49,51 @@
 #one {
   background-color: #c34851;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #two {
   background-color: #e19d55;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #three {
   background-color: #fff289;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #four {
   background-color: #40a85b;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #five {
   background-color: #386fac;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #six {
   background-color: #241369;
   color: white;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 #seven {
   background-color: #b44484;
   height: 8px; 
+  width: 8px;
+  margin: 0 auto;
 }
 
 

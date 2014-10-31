@@ -78,14 +78,17 @@ app.post('/submit', function(req,res){
   //API Request to turn zip into geocode
   geocoder.geocode(req.body.location, function(err, longlat) {
     console.log(longlat);
-    var zipCode = (longlat[0].longitude + ', ' + longlat[0].latitude);
-  db.User.createNewUser(req.body.username, req.body.password, zipCode,
-  function(err){
-    res.render("signup", {message: err.message, username: req.body.username});
-  },
-  function(success){
-    res.render("index", {message: success.message});
-    });
+    if (longlat) {
+      var zipCode = (longlat[0].longitude + ', ' + longlat[0].latitude);
+      db.User.createNewUser(req.body.username, req.body.password, zipCode,
+        function(err){
+          res.render("signup", {message: err.message, username: req.body.username});
+        },
+        function(success){
+          res.render("index", {message: success.message});
+        }
+      );
+    }
   });
 });
 
